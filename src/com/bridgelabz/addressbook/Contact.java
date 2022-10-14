@@ -1,47 +1,62 @@
 package com.bridgelabz.addressbook;
 
-import java.util.Scanner;
-
-
 public class Contact {
-
-    public void contacts() {
-        /**
-         * Declaring Variables
-         * Taking details from user and printing a contact
-         */
-        String First_Name;
-        String Last_Name;
-        String Address;
-        String City;
-        String State;
-        int Zip;
-        long PhoneNo;
-        String Email;
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Enter First name  ");
-        First_Name = scanner.nextLine();
-        System.out.println("Enter Last name ");
-        Last_Name = scanner.nextLine();
-        System.out.println("Enter Address ");
-        Address = scanner.nextLine();
-        System.out.println("Enter city name ");
-        City = scanner.nextLine();
-        System.out.println("Enter State name ");
-        State = scanner.nextLine();
-        System.out.println("Enter Zip Code");
-        Zip = scanner.nextInt();
-        System.out.println("Enter phone Number ");
-        PhoneNo = scanner.nextLong();
-        System.out.println("Enter Email Id ");
-        Email = scanner.next();
-
-        System.out.println("\nHere is your first contact details -> ");
-        System.out.println("\n First Name - " + First_Name + "\n Last Name - " + Last_Name + "\n Address - " + Address
-                + "\n City Name - " + City + "\n State Name - " + State + "\n Zip code - " + Zip + "\n Phone number - "
-                + PhoneNo + "\n Email id - " + Email);
-        scanner.close();
+    private String firstName;
+    private String lastName;
+    private String adddress;
+    private String city;
+    private String state;
+    private String zipCode;
+    private String mobileNumber;
+    private String email;
+    // creating getter and setter methods
+    public String getFirstName() {
+        return firstName;
     }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public String getAdddress() {
+        return adddress;
+    }
+    public void setAdddress(String adddress) {
+        this.adddress = adddress;
+    }
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
+    }
+    public String getState() {
+        return state;
+    }
+    public void setState(String state) {
+        this.state = state;
+    }
+    public String getZipCode() {
+        return zipCode;
+    }
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
