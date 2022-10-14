@@ -1,54 +1,48 @@
 package com.bridgelabz.addressbook;
 
 public class Contact {
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String city;
-    private String state;
-    private String zipCode;
-    private String mobileNumber;
-    private String email;
+    // local variables
+    String first_name, last_name, address, city, state, zip, phone, email;
 
-    public Contact(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber,
-                   String email) {
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setAddress(address);
-        this.setCity(city);
-        this.setState(state);
-        this.setZipCode(zip);
-        this.setMobileNumber(phoneNumber);
-        this.setEmail(email);
-    }
-
-    public Contact() {
-        // TODO Auto-generated constructor stub
-    }
-
-    // creating getter and setter methods
+    // getters and setters
     public String getFirstName() {
-        return firstName;
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getLastName() {
-        return lastName;
+        return last_name;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.last_name = lastName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phone;
+    }
+
+    public void setPhoneNumber(String phone) {
+        this.phone = phone;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public String getCity() {
@@ -67,35 +61,19 @@ public class Contact {
         this.state = state;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getAddress() {
+        return address;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getMobileNumber() {
-        return mobileNumber;
-    }
-
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    // to string method
     @Override
     public String toString() {
-        return "Contact [firstName=" + firstName + ", lastName=" + lastName + ", adddress=" + address + ", city=" + city
-                + ", state=" + state + ", zipCode=" + zipCode + ", mobileNumber=" + mobileNumber + ", email=" + email
-                + "]";
+        return ("First name: " + first_name + "\n Last name: " + last_name + "\n Address: " + address + "\n city: "
+                + city + "\n state: " + state + "\n zip: " + zip + "\n phone number:" + phone + "\n email: " + email
+                + "");
     }
-
 }
