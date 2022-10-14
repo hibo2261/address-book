@@ -62,7 +62,6 @@ public class AddressBook extends AddressBookMain{
         for (Contact contact : contactArrayList) {
             if (contact.getFirstName().equals(firstName)) {
                 isAvailable = true;
-
                 do {
                     System.out.println("What you want to edit for the contact");
                     System.out.println(
@@ -110,7 +109,7 @@ public class AddressBook extends AddressBookMain{
                     }
                     System.out.println("Updated Sucessfully ...");
                 }
-                while (choice != 9);
+                while (choice != 10);
             }
         }
         if (isAvailable == false) {
