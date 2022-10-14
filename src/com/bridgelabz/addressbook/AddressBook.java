@@ -3,7 +3,9 @@ package com.bridgelabz.addressbook;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AddressBook {
+import com.sun.tools.javac.Main;
+
+public class AddressBook extends AddressBookMain{
 
     Scanner sc = new Scanner(System.in);
 
@@ -53,56 +55,70 @@ public class AddressBook {
 
     public void editContact() {
         // editing the existing contact using their First Name
+        int choice;
         System.out.println("Enter the First Name of Contact to Edit");
         String firstName = sc.next();
-        boolean isAvailable = false ;
-        for(Contact contact : contactArrayList) {
-            if(contact.getFirstName().equals(firstName)) {
-                isAvailable = true ;
-                System.out.println("What you want to edit for the contact");
-                System.out.println("1.First Name\n2.Last Name\n3.Address\n4.City\n5.State\n6.Zip Code\n7.Mobile Number\n8.Email id");
-                int choice = sc.nextInt();
-                switch(choice) {
-                    case 1:
-                        System.out.println("Enter the First Name :");
-                        contact.setFirstName(sc.next());
-                        break;
-                    case 2:
-                        System.out.println("Enter the Last Name :");
-                        contact.setLastName(sc.next());
-                        break;
-                    case 3:
-                        System.out.println("Enter the Address :");
-                        contact.setAdddress(sc.next());
-                        break;
-                    case 4:
-                        System.out.println("Enter the City :");
-                        contact.setCity(sc.next());
-                        break;
-                    case 5:
-                        System.out.println("Enter the State :");
-                        contact.setState(sc.next());
-                        break;
-                    case 6:
-                        System.out.println("Enter the Zip code :");
-                        contact.setZipCode(sc.next());
-                        break;
-                    case 7:
-                        System.out.println("Enter the Mobile Number :");
-                        contact.setMobileNumber(sc.next());
-                        break;
-                    case 8:
-                        System.out.println("Enter the Email id :");
-                        contact.setEmail(sc.next());
-                        break;
+        boolean isAvailable = false;
+        for (Contact contact : contactArrayList) {
+            if (contact.getFirstName().equals(firstName)) {
+                isAvailable = true;
+
+                do {
+                    System.out.println("What you want to edit for the contact");
+                    System.out.println(
+                            "1.First Name\n2.Last Name\n3.Address\n4.City\n5.State\n6.Zip Code\n7.Mobile Number\n8.Email id\n9.Exit\n10.Main Menu");
+                    choice = sc.nextInt();
+                    // choose options what you want to edit
+                    switch (choice) {
+                        case 1:
+                            System.out.println("Enter the First Name :");
+                            contact.setFirstName(sc.next());
+                            break;
+                        case 2:
+                            System.out.println("Enter the Last Name :");
+                            contact.setLastName(sc.next());
+                            break;
+                        case 3:
+                            System.out.println("Enter the Address :");
+                            contact.setAdddress(sc.next());
+                            break;
+                        case 4:
+                            System.out.println("Enter the City :");
+                            contact.setCity(sc.next());
+                            break;
+                        case 5:
+                            System.out.println("Enter the State :");
+                            contact.setState(sc.next());
+                            break;
+                        case 6:
+                            System.out.println("Enter the Zip code :");
+                            contact.setZipCode(sc.next());
+                            break;
+                        case 7:
+                            System.out.println("Enter the Mobile Number :");
+                            contact.setMobileNumber(sc.next());
+                            break;
+                        case 8:
+                            System.out.println("Enter the Email id :");
+                            contact.setEmail(sc.next());
+                            break;
+                        case 9:
+                            System.exit(0);
+                            break;
+                        default:
+                            break;
+                    }
+                    System.out.println("Updated Sucessfully ...");
                 }
-                System.out.println("Updated Sucessfully ...");
+                while (choice != 9);
             }
         }
-        if(isAvailable == false){
+        if (isAvailable == false) {
             System.out.println("Contact is not Available \nTry again");
         }
     }
+
+
 
     public void deleteContact() {
         // taking first name of contact to be deleted

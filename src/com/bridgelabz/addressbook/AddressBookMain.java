@@ -3,6 +3,7 @@ package com.bridgelabz.addressbook;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 public class AddressBookMain {
 
     HashMap<String,AddressBook> addressBookHashMap = new HashMap<>();
@@ -13,10 +14,10 @@ public class AddressBookMain {
          */
         AddressBook addressBook = new AddressBook();
         int choice;
+        System.out.println("\n**** ADDRESSBOOK SIMULATION ****\n");
 
         while(true) {
             Scanner sc = new Scanner(System.in);
-            System.out.println("\n**** ADDRESSBOOK SIMULATION ****\n");
             System.out.println("Please Choose an Option");
             System.out.println("1. ADD CONTACT \n2. DISPLAY CONTACT \n3. EDIT CONTACT \n4. DELETE CONTACT \n5. EDIT");
             choice = sc.nextInt();
