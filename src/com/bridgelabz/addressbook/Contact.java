@@ -1,6 +1,4 @@
 package com.bridgelabz.addressbook;
-
-
 public class Contact {
     private String firstName, lastName, address, city, state, email, zip, phoneNumber;
 
@@ -81,7 +79,14 @@ public class Contact {
     }
 
     public String toString() {
-        return ("First name: " + firstName + " Last name: " + lastName + " Address: " + address + " city: " + city
-                + " state: " + state + " email: " + email + " zip: " + zip + " phone number:" + phoneNumber + "");
+        return ("First name: " + firstName +
+                " Last name: " + lastName +
+                " Address: " + address +
+                " city: " + city +
+                " state: " + state +
+                " email: " + email +
+                " zip: " + zip +
+                " phone number:" + phoneNumber +
+                "");
     }
 }
