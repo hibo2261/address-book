@@ -1,44 +1,54 @@
 package com.bridgelabz.addressbook;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class AddressBookMain {
 
-//	HashMap<String,AddressBook> addressBookHashMap = new HashMap<>();
-
     public static void main(String[] args) {
-        /**
-         * creating object of AddressBook class calling addContact method and displayContact
-         */
+        Scanner sc = new Scanner(System.in);
         AddressBook addressBook = new AddressBook();
-        int choice;
-        System.out.println("\n**** ADDRESSBOOK SIMULATION ****\n");
+        Map<String, AddressBook> addressBookMap = new HashMap<>();
 
-        while(true) {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Please Choose an Option");
-            System.out.println("1. ADD CONTACT \n2. DISPLAY CONTACT \n3. EDIT CONTACT \n4. DELETE CONTACT \n5. EDIT");
-            choice = sc.nextInt();
-            // performing task according to the choices entered by the User
+        while (true) {
+            System.out.println("\n**** Welcome to Address Book System ****");
+            System.out.println("1.New Address Book \n2.Select Address Book\n3.Delete Address Book\n4.Search Contact Data\n5.Exit");
+            System.out.print("Enter Your choice: ");
+            int choice = sc.nextInt();
+            // taking user choice
             switch (choice) {
                 case 1:
-                    addressBook.addContact();
+                    System.out.print("Enter Name of new Address Book: ");
+                    String bookName = sc.next();
+                    sc.nextLine();
+                    addressBookMap.put(bookName, new AddressBook());
+                    AddressBook.addressBookOptions(addressBookMap.get(bookName));
                     break;
                 case 2:
-                    addressBook.displayContact();
+                    System.out.println("List of available Address Book : ");
+                    Set<String> keys = addressBookMap.keySet();
+                    for (String key : keys) {
+                        System.out.println(key);
+                    }
+                    System.out.print("Enter Address Book name you want to Open : ");
+                    String name = sc.nextLine();
+                    System.out.println("Current Address Book is : " + name);
+                    AddressBook.addressBookOptions(addressBookMap.get(name));
                     break;
                 case 3:
-                    addressBook.editContact();
+                    System.out.print("Enter Address Book name: ");
+                    name = sc.nextLine();
+                    addressBookMap.remove(name);
                     break;
                 case 4:
-                    addressBook.deleteContact();
-                    break;
+                    addressBook.searchByOptions();
                 case 5:
-                    System.exit(0);
-                    break;
+                    sc.close();
+                    return;
                 default:
-                    System.out.println("Wrong choice entered !!!!!!");
-                    System.out.println("Kindly choose the correct Option");
+                    System.out.println("Invalid Choice");
                     break;
             }
         }

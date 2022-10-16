@@ -7,189 +7,176 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-
 public class AddressBook {
+    public ArrayList<Contact> contactList = new ArrayList<>();
 
-    static Scanner scanner = new Scanner(System.in);
-    ArrayList<Contact> ContactsArrayList = new ArrayList<>();
-    static HashMap<String, ArrayList<Contact>> hashmap = new HashMap<>();
-    static AddressBook details = new AddressBook();
-    static boolean flag = true;
-    //
-    public void Address() {
-        // adding a contact
-        Contact contact = new Contact();
-        System.out.println("***********************************");
-        System.out.println("Welcome to the Address Book Problem");
-        System.out.println("***********************************");
-        System.out.print("First Name    : ");
-        contact.setFirstName(scanner.next());
-        duplicasy(contact.getFirstName());
-        System.out.print("Last Name     : ");
-        contact.setLastName(scanner.next());
-        System.out.print("Address       : ");
-        contact.setAddress(scanner.next());
-        System.out.print("City Name     : ");
-        contact.setCity(scanner.next());
-        System.out.print("State Name    : ");
-        contact.setState(scanner.next());
-        System.out.print("Zip Code      : ");
-        contact.setZip(scanner.next());
-        System.out.print("Phone NO      : ");
-        contact.setPhoneNumber(scanner.next());
-        System.out.print("Email Id      : ");
-        contact.setEmail(scanner.next());
-        ContactsArrayList.add(contact);
-//        System.out.println(ContactsArrayList);
+    public boolean addContact(Contact contact) {
+        List<Contact> checkByName = searchByName(contact.getFirstName());
+        for (Contact equalName : checkByName)
+            if (equalName.equals(contact))
+                return false;
+        contactList.add(contact);
+        return true;
     }
-    // methods for editing a contact details
-    public void editContact() {
+    // searching contacts by first name
+    public List<Contact> searchByName(String name) {
+        return contactList.stream().filter(person -> person.getFirstName().equalsIgnoreCase(name))
+                .collect(Collectors.toList());
+    }
+    // searching contact by city
+    public List<Contact> searchByCity(String city) {
+        return contactList.stream().filter(person -> person.getCity().equalsIgnoreCase(city))
+                .collect(Collectors.toList());
+    }
+    // searching contacts by state
+    public List<Contact> searchByState(String state) {
+        return contactList.stream().filter(person -> person.getState().equalsIgnoreCase(state))
+                .collect(Collectors.toList());
+    }
 
-        System.out.println("Enter the first name of the contact you want to edit: ");
-        String name = scanner.next();
+    public void editContact(Contact current, Contact edit) {
+        if (!contactList.contains(current))
+            return;
+        contactList.remove(current);
+        contactList.add(edit);
+    }
 
-        for (Contact contacts : ContactsArrayList) {
-            if (contacts.getFirstName().equals(name)) {
-                System.out.print("Enter first name   : ");
-                contacts.setFirstName(scanner.next());
-                System.out.print("Enter Last name    : ");
-                contacts.setLastName(scanner.next());
-                System.out.print("Enter Address      : ");
-                contacts.setAddress(scanner.next());
-                System.out.print("Enter City       : ");
-                contacts.setCity(scanner.next());
-                System.out.print("Enter State      : ");
-                contacts.setState(scanner.next());
-                System.out.print("Enter Zip        : ");
-                contacts.setZip(scanner.next());
-                System.out.print("Enter Phone      : ");
-                contacts.setPhoneNumber(scanner.next());
-                System.out.print("Enter Email      : ");
-                contacts.setEmail(scanner.next());
-                System.out.print("Contact edited successfully!");
-//                System.out.println(ContactsArrayList);
-            } else
-                System.out.println("The contact with first name : " + name + " is not found!");
+    public void deleteContact(Contact contacts) {
+        contactList.remove(contacts);
+    }
+
+    @Override
+    public String toString() {
+        if (contactList.isEmpty())
+            return "No contacts found!";
+        StringBuilder result = new StringBuilder();
+        for (Contact contacts : contactList) {
+            result.append(" ").append(contacts);
         }
+        return result.toString();
     }
-    // methods for delete a contact
-    public void deleteContact() {
-        System.out.println("Enter the first name of the contact you want to edit: ");
-        String dname = scanner.next();
-        for (int i = 0; i < ContactsArrayList.size(); i++) {
-
-            if (ContactsArrayList.get(i).getFirstName().equals(dname)) {
-                ContactsArrayList.remove(i);
-                System.out.println("List After deletion \n" + ContactsArrayList);
-
-            } else {
-                System.out.println("The contact with first name : " + dname + " is not found!");
-            }
-        }
+    // adding a contact method
+    public static Contact readContact() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter First Name: ");
+        String firstName = sc.nextLine();
+        System.out.print("Enter Last Name: ");
+        String lastName = sc.nextLine();
+        System.out.print("Enter Address: ");
+        String address = sc.nextLine();
+        System.out.print("Enter City: ");
+        String city = sc.nextLine();
+        System.out.print("Enter State: ");
+        String state = sc.nextLine();
+        System.out.print("Enter Zip Code: ");
+        String zip = sc.next();
+        sc.nextLine();
+        System.out.print("Enter Phone Number: ");
+        String phoneNumber = sc.next();
+        sc.nextLine();
+        System.out.print("Enter Email ID: ");
+        String email = sc.nextLine();
+        return new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
     }
 
-    public void duplicasy(String firstName) {
-        for (Contact contacts : ContactsArrayList) {
-            String contactName = contacts.getFirstName();
-            if (firstName.equals(contactName)) {
-                System.out.println("This Person is Already Present");
-                Address();
-            }
-        }
-    }
+    public static void addressBookOptions(AddressBook addressBook) {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n-------------------------- Address Book Contact Option --------------------------");
+            System.out.println("1. Add contact details");
+            System.out.println("2. Edit contact details");
+            System.out.println("3. Delete contact details");
+            System.out.println("4. Show contacts details");
+            System.out.println("5. Back to main menu");
+            System.out.print("Enter Your choice: ");
+            int choice = sc.nextInt();
+            // taking user input what user want to
+            sc.nextLine();
+            switch (choice) {
+                case 1:
+                    if (addressBook.addContact(readContact()))
+                        System.out.println("Contact Added Successfully");
+                    else
+                        System.out.println("Contact Already Exists");
+                    break;
+                case 2:
+                    System.out.print("Enter First name: ");
+                    String name = sc.nextLine();
+                    List<Contact> equalName = addressBook.searchByName(name);
+                    if (equalName.isEmpty())
+                        System.out.println("Data Not Found");
+                    else if (equalName.size() == 1) {
+                        addressBook.editContact(equalName.get(0), readContact());
 
-    public void display() {
-        System.out.println(ContactsArrayList);
-    }
-    // method for create another addressBook
-    public void createAddressBook() {
-
-        while (flag) {
-            System.out.println("What do you want to do: ");
-            System.out.print(
-                    "1.Create new address book\n2.Edit existing address book\n3.Display all address books\n4.Exit : ");
-            int choose = scanner.nextInt();
-            boolean k = true;
-            switch (choose) {
-                case 1 -> {
-                    System.out.print("Enter the name of address book: ");
-                    String address_name = scanner.next();
-                    if (hashmap.containsKey(address_name)) {
-                        System.out.println("Address book name exits, Enter different name");
-                        break;
-                    }
-                    ContactsArrayList = new ArrayList<>();
-
-                    while (k) {
-                        System.out.println("What do you want to do: ");
-                        System.out.print("1.Add details\n2.Edit details\n3.Delete contact\n4.Display Contact\n5.Exit : ");
-                        int choose1 = scanner.nextInt();
-
-                        switch (choose1) {
-                            case 1 -> details.Address();
-                            case 2 -> details.editContact();
-                            case 3 -> details.deleteContact();
-                            case 4 -> details.display();
-                            case 5 -> {
-                                System.out.println("Thank You!");
-                                k = false;
-                            }
-                            default -> System.out.println("Choose valid option");
-                        }
-                        hashmap.put(address_name, ContactsArrayList);
-//                        System.out.println(hashmap);
-                    }
-                }
-                case 2 -> {
-                    System.out.println("Enter the name of address book: ");
-                    String address_name_old = scanner.next();
-                    if (hashmap.containsKey(address_name_old)) {
-
-                        ContactsArrayList = new ArrayList<>();
-                        ContactsArrayList = hashmap.get(address_name_old);
-                        boolean j = true;
-                        while (j) {
-                            System.out.println("What do you want to do: ");
-                            System.out
-                                    .print("1.Add details\n2.Edit details\n3.Delete contact\n4.Display contact\n5.Exit : ");
-                            int choose1 = scanner.nextInt();
-
-                            switch (choose1) {
-                                case 1 -> details.Address();
-                                case 2 -> details.editContact();
-                                case 3 -> details.deleteContact();
-                                case 4 -> details.display();
-                                case 5 -> {
-                                    System.out.println("Thank you!");
-                                    j = false;
-                                }
-                                default -> System.out.println("Choose valid option");
-                            }
-                            hashmap.put(address_name_old, ContactsArrayList);
-                            System.out.println(hashmap);
-                        }
-                        flag = false;
+                        System.out.println("Contact data modified");
                     } else {
-                        System.out.println("Enter valid address book name");
+                        equalName.forEach(x -> System.out.println(equalName.indexOf(x) + "  " + x.toString()));
+                        System.out.print("Enter index to edit: ");
+                        int i = sc.nextInt();
+                        sc.nextLine();
+                        addressBook.editContact(equalName.get(i), readContact());
+                        System.out.println("Contact Modified");
                     }
-                }
-                case 3 -> {
-                    System.out.println(hashmap);
-                    System.out.println();
-                }
-                case 4 -> {
-                    System.out.println("Thank You!");
-                    flag = false;
-                }
-                default -> System.out.println("Enter valid option");
+                    break;
+                case 3:
+                    System.out.print("Enter First name to delete contact: ");
+                    name = sc.nextLine();
+                    equalName = addressBook.searchByName(name);
+                    if (equalName.isEmpty())
+                        System.out.println("Data Not Found");
+                    else if (equalName.size() == 1) {
+                        addressBook.deleteContact(equalName.get(0));
+                        System.out.println("Contact data deleted");
+                    } else {
+                        equalName.forEach(x -> System.out.println(equalName.indexOf(x) + "  " + x.toString()));
+                        System.out.print("Enter an index : ");
+                        int index = sc.nextInt();
+                        sc.nextLine();
+                        addressBook.deleteContact(equalName.get(index));
+                        System.out.println("Contact data deleted");
+                    }
+                    break;
+                case 4:
+                    System.out.println(addressBook.toString());
+                    break;
+                case 5:
+                    return;
+                default:
+                    System.out.println("Invalid Choice!");
+                    break;
             }
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println("***********************************");
-        System.out.println("Welcome to the Address Book Problem");
-        System.out.println("***********************************");
-        details.createAddressBook();
+    // searching methods, taking user input through which user want to search
+    public void searchByOptions() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1.By name");
+        System.out.println("2.By city");
+        System.out.println("3.By state");
+        System.out.println("4.Back");
+        System.out.print("Your choice: ");
+        int choice = sc.nextInt();
+        sc.nextLine();
+        switch (choice) {
+            case 1:
+                System.out.print("Enter name: ");
+                String name = sc.nextLine();
+                contactList.forEach(book -> searchByName(name).forEach(System.out::println));
+                break;
+            case 2:
+                System.out.print("Enter city: ");
+                String city = sc.nextLine();
+                contactList.forEach(book -> searchByCity(city).forEach(System.out::println));
+                break;
+            case 3:
+                System.out.print("Enter state: ");
+                String state = sc.nextLine();
+                contactList.forEach(book -> searchByState(state).forEach(System.out::println));
+                break;
+            case 4:
+                return;
+            default:
+                System.out.println("INVALID CHOICE!");
+        }
     }
 }
