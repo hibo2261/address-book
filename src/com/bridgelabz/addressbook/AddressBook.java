@@ -19,9 +19,11 @@ public class AddressBook {
         return true;
     }
     // searching contacts by first name
+
     public List<Contact> searchByName(String name) {
         return contactList.stream().filter(person -> person.getFirstName().equalsIgnoreCase(name))
                 .collect(Collectors.toList());
+
     }
     // searching contact by city
     public List<Contact> searchByCity(String city) {
@@ -156,6 +158,7 @@ public class AddressBook {
         System.out.println("4.Back");
         System.out.print("Your choice: ");
         int choice = sc.nextInt();
+
         sc.nextLine();
         switch (choice) {
             case 1:
