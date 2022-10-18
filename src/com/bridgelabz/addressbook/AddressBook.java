@@ -9,11 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-/**
- *
- * @author HITESH
- *
- */
+
 public class AddressBook {
     static ArrayList<Contact> contactDetails = new ArrayList();
     static Scanner sc = new Scanner(System.in);
