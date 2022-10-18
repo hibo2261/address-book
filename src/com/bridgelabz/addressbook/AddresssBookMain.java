@@ -6,12 +6,12 @@ import java.util.Scanner;
 import java.util.Set;
 
 
-public class AddressBookMain {
+public class AddresssBookMain {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        AddressBook addressBook = new AddressBook();
-        Map<String, AddressBook> addressBookMap = new HashMap<>();
+        AddresssBook addressBook = new AddresssBook();
+        Map<String, AddresssBook> addressBookMap = new HashMap<>();
 
         while (true) {
             System.out.println("\nWelcome to Address Book System");
@@ -25,8 +25,8 @@ public class AddressBookMain {
                     System.out.print("Enter Name of new Address Book: ");
                     String bookName = sc.next();
                     sc.nextLine();
-                    addressBookMap.put(bookName, new AddressBook());
-                    AddressBook.addressBookOptions(addressBookMap.get(bookName));
+                    addressBookMap.put(bookName, new AddresssBook());
+                    AddresssBook.addressBookOptions(addressBookMap.get(bookName));
                     break;
                 case 2:
                     System.out.println("List of available Address Book : ");
@@ -37,7 +37,7 @@ public class AddressBookMain {
                     System.out.print("Enter Address Book Name: ");
                     String name = sc.nextLine();
                     System.out.println("Current Address Book is : " + name);
-                    AddressBook.addressBookOptions(addressBookMap.get(name));
+                    AddresssBook.addressBookOptions(addressBookMap.get(name));
                     break;
                 case 3:
                     System.out.print("Enter Address Book Name: ");
@@ -47,7 +47,7 @@ public class AddressBookMain {
                 case 4:
                     addressBook.searchByOptions();
                 case 5:
-                    AddressBook.viewByOption();
+                    AddresssBook.viewByOption();
                     break;
                 case 6:
                     sc.close();

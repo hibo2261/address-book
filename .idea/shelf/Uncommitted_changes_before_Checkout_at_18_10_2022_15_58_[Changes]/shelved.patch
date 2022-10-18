@@ -1,0 +1,37 @@
+Index: src/com/bridgelabz/addressbook/AddressBookMain.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.bridgelabz.addressbook;\r\n\r\nimport java.util.Scanner;\r\n\r\npublic class AddressBookMain {\r\n\r\n//\tHashMap<String,AddressBook> addressBookHashMap = new HashMap<>();\r\n\r\n    public static void main(String[] args) {\r\n        /**\r\n         * creating object of AddressBook class calling addContact method and displayContact\r\n         */\r\n        AddressBook addressBook = new AddressBook();\r\n        int choice;\r\n        System.out.println(\"\\n**** ADDRESSBOOK SIMULATION ****\\n\");\r\n\r\n        while(true) {\r\n            Scanner sc = new Scanner(System.in);\r\n            System.out.println(\"Please Choose an Option\");\r\n            System.out.println(\"1. ADD CONTACT \\n2. DISPLAY CONTACT \\n3. EDIT CONTACT \\n4. DELETE CONTACT \\n5. EDIT\");\r\n            choice = sc.nextInt();\r\n            // performing task according to the choices entered by the User\r\n            switch (choice) {\r\n                case 1:\r\n                    addressBook.addContact();\r\n                    break;\r\n                case 2:\r\n                    addressBook.displayContact();\r\n                    break;\r\n                case 3:\r\n                    addressBook.editContact();\r\n                    break;\r\n                case 4:\r\n                    addressBook.deleteContact();\r\n                    break;\r\n                case 5:\r\n                    System.exit(0);\r\n                    break;\r\n                default:\r\n                    System.out.println(\"Wrong choice entered !!!!!!\");\r\n                    System.out.println(\"Kindly choose the correct Option\");\r\n                    break;\r\n            }\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/bridgelabz/addressbook/AddressBookMain.java b/src/com/bridgelabz/addressbook/AddressBookMain.java
+--- a/src/com/bridgelabz/addressbook/AddressBookMain.java	
++++ b/src/com/bridgelabz/addressbook/AddressBookMain.java	
+@@ -1,4 +1,4 @@
+-package com.bridgelabz.addressbook;
++/*package com.bridgelabz.addressbook;
+ 
+ import java.util.Scanner;
+ 
+@@ -7,9 +7,9 @@
+ //	HashMap<String,AddressBook> addressBookHashMap = new HashMap<>();
+ 
+     public static void main(String[] args) {
+-        /**
+-         * creating object of AddressBook class calling addContact method and displayContact
+-         */
++
++         // creating object of AddressBook class calling addContact method and displayContact
++
+         AddressBook addressBook = new AddressBook();
+         int choice;
+         System.out.println("\n**** ADDRESSBOOK SIMULATION ****\n");
+@@ -43,4 +43,4 @@
+             }
+         }
+     }
+-}
+\ No newline at end of file
++} */
+\ No newline at end of file

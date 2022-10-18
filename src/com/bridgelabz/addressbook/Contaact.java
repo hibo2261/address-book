@@ -1,10 +1,10 @@
 package com.bridgelabz.addressbook;
 
 
-public class Contact {
+public class Contaact {
     private String firstName, lastName, address, city, state, email, zip, phoneNumber;
 
-    public Contact (String firstName, String lastName, String address, String city, String state, String zip,
+    public Contaact(String firstName, String lastName, String address, String city, String state, String zip,
                     String phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
