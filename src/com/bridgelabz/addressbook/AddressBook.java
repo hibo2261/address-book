@@ -8,7 +8,8 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 
-public class AddressBook {
+
+public class AddressBook  {
     // array list created
     public ArrayList<Contact> contactList = new ArrayList<>();
     // hash map created -  name, city and state
