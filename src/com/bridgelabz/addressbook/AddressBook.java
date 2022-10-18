@@ -8,57 +8,57 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 
-public class AddresssBook {
+public class AddressBook {
     // array list created
-    public ArrayList<Contaact> contactList = new ArrayList<>();
-    // hash map created -   name, city and state
-    public static Map<String, Contaact> nameHashMap = new HashMap<>();
-    public static Map<String, Contaact> cityHashMap = new HashMap<>();
-    public static Map<String, Contaact> stateHashMap = new HashMap<>();
+    public ArrayList<Contact> contactList = new ArrayList<>();
+    // hash map created -  name, city and state
+    public static Map<String, Contact> nameHashMap = new HashMap<>();
+    public static Map<String, Contact> cityHashMap = new HashMap<>();
+    public static Map<String, Contact> stateHashMap = new HashMap<>();
 
-    public boolean addContact(Contaact contact) {
-        List<Contaact> checkByName = searchByName(contact.getFirstName());
-        for (Contaact equalName : checkByName)
+    public boolean addContact(Contact contact) {
+        List<Contact> checkByName = searchByName(contact.getFirstName());
+        for (Contact equalName : checkByName)
             if (equalName.equals(contact))
                 return false;
         contactList.add(contact);
         return true;
     }
     // searching contacts by first name
-    public List<Contaact> searchByName(String name) {
+    public List<Contact> searchByName(String name) {
         return contactList.stream().filter(person -> person.getFirstName().equalsIgnoreCase(name))
                 .collect(Collectors.toList());
     }
     // searching contact by city
-    public List<Contaact> searchByCity(String city) {
+    public List<Contact> searchByCity(String city) {
         return contactList.stream().filter(person -> person.getCity().equalsIgnoreCase(city))
                 .collect(Collectors.toList());
     }
     // searching contacts by state
-    public List<Contaact> searchByState(String state) {
+    public List<Contact> searchByState(String state) {
         return contactList.stream().filter(person -> person.getState().equalsIgnoreCase(state))
                 .collect(Collectors.toList());
     }
-    public static void viewByName(Map<String, Contaact> nameHashMap) {
+    public static void viewByName(Map<String, Contact> nameHashMap) {
         nameHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
     }
 
-    public static void viewByCity(Map<String, Contaact> cityHashMap) {
+    public static void viewByCity(Map<String, Contact> cityHashMap) {
         cityHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
     }
 
-    public static void viewByState(Map<String, Contaact> stateHashMap) {
+    public static void viewByState(Map<String, Contact> stateHashMap) {
         stateHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
     }
 
-    public void editContact(Contaact current, Contaact edit) {
+    public void editContact(Contact current, Contact edit) {
         if (!contactList.contains(current))
             return;
         contactList.remove(current);
         contactList.add(edit);
     }
 
-    public void deleteContact(Contaact contacts) {
+    public void deleteContact(Contact contacts) {
         contactList.remove(contacts);
     }
 
@@ -67,13 +67,13 @@ public class AddresssBook {
         if (contactList.isEmpty())
             return "No contacts found!";
         StringBuilder result = new StringBuilder();
-        for (Contaact contacts : contactList) {
+        for (Contact contacts : contactList) {
             result.append(" ").append(contacts);
         }
         return result.toString();
     }
     // adding a contact method
-    public static Contaact readContact() {
+    public static Contact readContact() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter First Name: ");
         String firstName = sc.nextLine();
@@ -93,10 +93,10 @@ public class AddresssBook {
         sc.nextLine();
         System.out.print("Enter Email ID: ");
         String email = sc.nextLine();
-        return new Contaact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+        return new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
     }
 
-    public static void addressBookOptions(AddresssBook addressBook) {
+    public static void addressBookOptions(AddressBook addressBook) {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("\n-------------------------- Address Book Contact Option --------------------------");
@@ -119,7 +119,7 @@ public class AddresssBook {
                 case 2:
                     System.out.print("Enter First name: ");
                     String name = sc.nextLine();
-                    List<Contaact> equalName = addressBook.searchByName(name);
+                    List<Contact> equalName = addressBook.searchByName(name);
                     if (equalName.isEmpty())
                         System.out.println("Data Not Found");
                     else if (equalName.size() == 1) {
@@ -196,6 +196,7 @@ public class AddresssBook {
                 System.out.println("INVALID CHOICE!");
         }
     }
+
     // display method view by options
     public static void viewByOption() {
         Scanner sc = new Scanner(System.in);

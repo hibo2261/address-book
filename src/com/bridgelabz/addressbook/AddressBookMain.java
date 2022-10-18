@@ -6,12 +6,13 @@ import java.util.Scanner;
 import java.util.Set;
 
 
-public class AddresssBookMain {
+public class AddressBookMain {
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        AddresssBook addressBook = new AddresssBook();
-        Map<String, AddresssBook> addressBookMap = new HashMap<>();
+        AddressBook addressBook = new AddressBook();
+        Map<String, AddressBook> addressBookMap = new HashMap<>();
 
         while (true) {
             System.out.println("\nWelcome to Address Book System");
@@ -25,8 +26,8 @@ public class AddresssBookMain {
                     System.out.print("Enter Name of new Address Book: ");
                     String bookName = sc.next();
                     sc.nextLine();
-                    addressBookMap.put(bookName, new AddresssBook());
-                    AddresssBook.addressBookOptions(addressBookMap.get(bookName));
+                    addressBookMap.put(bookName, new AddressBook());
+                    AddressBook.addressBookOptions(addressBookMap.get(bookName));
                     break;
                 case 2:
                     System.out.println("List of available Address Book : ");
@@ -37,17 +38,17 @@ public class AddresssBookMain {
                     System.out.print("Enter Address Book Name: ");
                     String name = sc.nextLine();
                     System.out.println("Current Address Book is : " + name);
-                    AddresssBook.addressBookOptions(addressBookMap.get(name));
+                    AddressBook.addressBookOptions(addressBookMap.get(name));
                     break;
                 case 3:
                     System.out.print("Enter Address Book Name: ");
                     name = sc.nextLine();
-                    addressBookMap.remove(name) ;
+                    addressBookMap.remove(name);
                     break;
                 case 4:
                     addressBook.searchByOptions();
                 case 5:
-                    AddresssBook.viewByOption();
+                    AddressBook.viewByOption();
                     break;
                 case 6:
                     sc.close();
