@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class AddressBookMain {
+public class AddressBookMainn {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
