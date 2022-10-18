@@ -42,7 +42,7 @@ public class AddressBookMain {
                 case 3:
                     System.out.print("Enter Address Book Name: ");
                     name = sc.nextLine();
-                    addressBookMap.remove(name);
+                    addressBookMap.remove(name) ;
                     break;
                 case 4:
                     addressBook.searchByOptions();

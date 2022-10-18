@@ -8,11 +8,10 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 
-
-public class AddressBook  {
+public class AddressBook {
     // array list created
     public ArrayList<Contact> contactList = new ArrayList<>();
-    // hash map created -  name, city and state
+    // hash map created -   name, city and state
     public static Map<String, Contact> nameHashMap = new HashMap<>();
     public static Map<String, Contact> cityHashMap = new HashMap<>();
     public static Map<String, Contact> stateHashMap = new HashMap<>();
@@ -197,7 +196,6 @@ public class AddressBook  {
                 System.out.println("INVALID CHOICE!");
         }
     }
-
     // display method view by options
     public static void viewByOption() {
         Scanner sc = new Scanner(System.in);
