@@ -6,12 +6,12 @@ public class Contact {
 
     public Contact (String firstName, String lastName, String address, String city, String state, String zip,
                     String phoneNumber, String email) {
-        this.firstName = firstName ;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.city = city;
         this.state = state;
-        this.zip =  zip;
+        this.zip = zip;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
@@ -80,6 +80,7 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
+    @Override
     public String toString() {
         return ("First name: " + firstName + " Last name: " + lastName + " Address: " + address + " city: " + city
                 + " state: " + state + " email: " + email + " zip: " + zip + " phone number:" + phoneNumber + "");
