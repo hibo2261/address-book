@@ -16,7 +16,7 @@ public class AddressBook {
     public static Map<String, Contact> cityHashMap = new HashMap<>();
     public static Map<String, Contact> stateHashMap = new HashMap<>();
 
-    public boolean addContact(Contact contact) {
+    public boolean addContact(Contact contact)  {
         List<Contact> checkByName = searchByName(contact.getFirstName());
         for (Contact equalName : checkByName)
             if (equalName.equals(contact))

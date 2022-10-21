@@ -6,17 +6,15 @@ import java.util.Scanner;
 import java.util.Set;
 
 
-public class AddressBookMain extends AddressBook {
+public class AddressBookMain extends AddressBook  {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        AddressBook addressBook = new AddressBook();
         Map<String, AddressBook> addressBookMap = new HashMap<>();
 
         while (true) {
             System.out.println("\nWelcome to Address Book System");
-            System.out.println(
-                    "1.New Address Book\n2.Select Address Book\n3.Delete Address Book\n4.Search Contact Data\n5.View Contact Data\n6.Exit");
+            System.out.println("1.New Address Book\n2.Select Address Book\n3.Delete Address Book\n4.Read data in file\n5.Write data in file\n6.Exit");
             System.out.print("Enter Your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -44,13 +42,15 @@ public class AddressBookMain extends AddressBook {
                     name = sc.nextLine();
                     addressBookMap.remove(name);
                     break;
-                case 4:
-                    addressBook.searchByOptions();
-                case 5:
-                    AddressBook.viewByOption();
+                case 4 : FileIO fileIO = new FileIO();
+                    fileIO.writeData(addressBookMap);
+                    break;
+                case 5 :
+                    System.out.println(FileIO.readData());
                     break;
                 case 6:
                     sc.close();
+                    System.out.println("Thank You!!");
                     return;
                 default:
                     System.out.println("Invalid Choice");
